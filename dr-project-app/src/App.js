@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import NavBar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import {Switch, Route, BrowserRouter} from 'react-router-dom';
+import AddRecipe from './Component/AddRecipe';
+import DeleteRecipe from './Component/DeleteRecipe';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render(){
+    return (
+      <BrowserRouter>
+      <div className="App">
+      <NavBar bg="primary" varient="dark">
+        <Nav className="mr-auto">
+          <Nav.link href="/">Home</Nav.link>
+          <Nav.link href="/add-recipe">Add Recipe</Nav.link>
+          <Nav.link href="/delete-recipe">Delete Recipe</Nav.link>
+        </Nav>
+      </NavBar>
+
+      <Switch>
+        <Route exact path = "/" component={App} />
+        <Route path = "/add-recipe" component={AddRecipe} />
+        <Route path = "/delete-recipe" component={DeleteRecipe} />
+      </Switch>
+      
+      </div>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
