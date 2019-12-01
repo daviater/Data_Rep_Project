@@ -1,24 +1,25 @@
 import React, { Component } from 'react';
 import ItemService from'./ItemService';
+import { Form, TextArea } from 'semantic-ui-react'
 
 class AddRecipe extends Component {
     constructor(props) {
         super(props);
-        this.state = {Title: '', Ingredients: [ 'poop', 'poop2'], Steps: [], Image: ''};
+        this.state = {Title: '', Ingredients: '', Steps: '', Image: ''};
         this.addItemService = new ItemService();
 
-        this.ingredientsArray = [];
+       
 
         this.titleChange = this.titleChange.bind(this);
         this.imageChange = this.imageChange.bind(this);
 
         this.ingredientChange = this.ingredientChange.bind(this);
-        this.ingredientSubmit = this.ingredientSubmit.bind(this);
-        this.ingredientsRemove = this.ingredientsRemove.bind(this);
+        //this.ingredientSubmit = this.ingredientSubmit.bind(this);
+        //this.ingredientsRemove = this.ingredientsRemove.bind(this);
 
         this.stepsChange = this.stepsChange.bind(this);
-        this.stepsSubmit = this.stepsSubmit.bind(this);
-        this.stepsRemove = this.stepsRemove.bind(this);
+        //this.stepsSubmit = this.stepsSubmit.bind(this);
+        //this.stepsRemove = this.stepsRemove.bind(this);
 
         this.handleSubmit = this.handleSubmit.bind(this);
       }
@@ -33,34 +34,34 @@ class AddRecipe extends Component {
 
       ingredientChange(event){
         //this.setState({this.ingredientsArray})
-        this.ingredientsArray.pop();
-        this.ingredientsArray.push(event.target.value);
-        //this.setState({Ingredients: this.ingredientsArray});
+        //this.ingredientsArray.pop();
+       // this.ingredientsArray.push(event.target.value);
+        this.setState({Ingredients: event.target.value});
       }
 
-      ingredientSubmit(event){
-        this.ingredientsArray.push(event.target.value);
+      //ingredientSubmit(event){
+        //this.ingredientsArray.push(event.target.value);
         //this.setState({Ingredients: this.ingredientsArray});
-      }
+      //}
 
-      ingredientsRemove(event){
-        this.ingredientsArray.pop();
-      }
+      //ingredientsRemove(event){
+        //this.ingredientsArray.pop();
+      //}
 
       stepsChange(event){
-        this.stepsArray.pop();
-        this.stepsArray.push(event.target.value);
-        this.setState({Steps: this.stepsArray});
+        //this.stepsArray.pop();
+       //this.stepsArray.push(event.target.value);
+        this.setState({Steps: event.target.value});
       }
 
-      stepsSubmit(event){
+      /*stepsSubmit(event){
         this.stepsArray.push(event.target.value);
         this.setState({Steps: this.stepsArray});
-      }
+      }*/
 
-      stepsRemove(event){
+      /*stepsRemove(event){
         this.stepsArray.pop();
-      }
+      }*/
   
       handleSubmit(event) {
         event.preventDefault();
@@ -82,17 +83,29 @@ class AddRecipe extends Component {
               </label><br/>
               <label>
                 Ingredients:
-                <br/>{this.ingredientsArray.map((item, index) => (
+                <Form>
+                  <TextArea value={this.state.Ingredients} onChange={this.ingredientChange} className="form-control"/>
+                </Form>
+                
+                {/*<br/>{this.ingredientsArray.map((item, index) => (
                 <var key={index} item={item} />
                 ))}<br/>
 
                 <input type="text" defaultValue="New Ingredient"  className="form-control"/>
                 <input type="submit" value="Add Ingredient" onClick={this.ingredientSubmit} className="btn btn-primary"/>
+                */}
               </label><br/>
+              <label>
+                Steps:
+                <Form>
+                  <TextArea value={this.state.Steps} onChange={this.stepsChange} className="form-control"/>
+                </Form>
+                </label><br/> 
+
               
-            {/*<form onSubmit={this.handleSubmit}>
+            {<form onSubmit={this.handleSubmit}>
               <input type="submit" value="Submit" onClick={this.handleSubmit} className="btn btn-primary"/>
-              </form>*/}
+              </form>}
           
         </div>
         );

@@ -7,10 +7,11 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import AddRecipe from './Component/AddRecipe';
 import DeleteRecipe from './Component/DeleteRecipe';
+import ReadRecipe from './Component/ReadRecipe';
 
 ReactDOM.render(<Router>
     <div>
-      <Route exact path='/' component={App} />
+      <Route exact path='/' component={ReadRecipe} />
       <Route path='/add-recipe' component={AddRecipe} />
       <Route path='/delete-recipe' component={DeleteRecipe}/>
     </div>
